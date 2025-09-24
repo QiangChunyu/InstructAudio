@@ -221,6 +221,8 @@
 
         <p>All test samples and speakers have not appeared in the training set and validation set.</p>
 
+        <p>During inference, we employ a straightforward yet effective method to estimate total duration. Since speech rate strongly correlates with both age and emotion, we compute the average duration per phoneme for different age-emotion combinations (e.g., youth-happy) from the training set. At inference time, we perform keyword matching on the instruction text and calculate the total duration by multiplying the number of phonemes by the corresponding average duration. When no keywords match, we default to the global average phoneme duration.</p>
+
         <p>For CosyVoice2, which lacks text-based control for timbre attributes (gender, age), we provide reference audio that matches timbre description during inference and map inputs to its supported short-form control text (e.g., "Please speak very happy").</p>
 
         <p>Note that DiffRhythm+ does not support music synthesis under 90 seconds; therefore, we generate longer sequences and truncate them to create test samples, which may introduce evaluation bias.</p>
